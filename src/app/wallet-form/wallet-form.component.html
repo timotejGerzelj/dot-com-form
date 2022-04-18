@@ -1,0 +1,149 @@
+<div class="container">
+  <form [formGroup]="formValuesWallet" (ngSubmit)="onSubmit(formValuesWallet.value)">
+    <div formGroupName="storeDatabase">
+    <label for="storeDbName">Store Name: </label><br>
+    <select
+      name="storeDbName"
+      class="form-control"
+      formControlName="storeDbName"
+      [(ngModel)]="currentStore"
+      >
+      <option
+      *ngFor="let store of stores | async"
+      [ngValue]="store"
+      >{{ store.storeId }}
+    </option>
+    </select>
+
+  <div class="row-12-xs">
+      <label for="date">Date</label><br>
+      <input
+      name="date"
+      type="string"
+      formControlName="storeDbDate"
+      value="" disabled><br>
+
+      <label for="address">Store Address</label><br>
+      <input
+      type="text"
+      name="address"
+      formControlName="storeDbAddress"
+      value="{{currentStore.storeAddress}}"
+      disabled><br>
+
+      <label for="phoneNum"> Store Phone Number</label><br>
+      <input
+      type="text"
+      name="phoneNum"
+      formControlName="storeDbPhoneNumber"
+      value="{{currentStore.phoneNumber}}"
+      disabled
+      ><br>
+    </div>
+    </div>
+    <div>
+    <div class="row">
+      <label for="servedBy">Served By: </label><br>
+      <input
+      type="text"
+      name="servedBy"
+      formControlName="servedBy"
+      ><br>
+
+      <label for="email">Email</label><br>
+      <input
+      type="text"
+      name="email"
+      formControlName="email"
+      ><br>
+    </div>
+
+    <div class="row">
+      <label for="btBroadband">BT broadband is</label><br>
+      <input
+      type="text"
+      name="btBroadband"
+      formControlName="btBroadband"
+      ><br>
+      <label for="btTvPackage">BT Package</label><br>
+      <input
+      type="text"
+      name="btTvPackage"
+      formControlName="btTvPackage"><br>
+      <label for="sportPackage">Sport Package</label><br>
+     <input
+        name="sportPackage"
+        formControlName="sportPackage"
+        type="date"
+      >
+
+    </div>
+
+    <div class="row">
+      <label for="monthlyCharge">Monthly Charge</label><br>
+      <input
+      type="text"
+      name="monthlyCharge"
+      formControlName="monthlyCharge"
+      (keypress)="keyPress($event)"
+      ><br>
+      <label for="upFrontFee">Upfront fee</label><br>
+      <input
+      type="text"
+      name="upFrontFee"
+      formControlName="upFrontFee"
+      (keypress)="keyPress($event)"
+      ><br>
+      <label for="payments">Instalment of payments </label><br>
+      <select name="payments" formControlName="payments" name="payments" class="form-control">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+    <div class="row"><br>
+      <label for="handyInfo">Handy information</label><br>
+      <textarea
+      class="form-control"
+      name="handyInfo"
+      formControlName="handyInfo"
+      ></textarea><br>
+      <button
+      type=""
+      class="btn btn-error"
+      (click)="onReset($event)"
+      >Reset</button>
+      <button type="submit" class="btn btn-primary" [disabled]="!formValuesWallet.valid">Submit</button>
+    </div>
+  </div>
+  </form>
+  <table>
+
+    <div *ngIf="">
+      <h3>Store name:</h3>
+    <caption><h3>Your Inputs</h3></caption>
+    <th>    Store name:    </th>
+    <th>    Date:     </th>
+    <th>    Email:   </th>
+    <th>    BT Broadband:   </th>
+    <th>    BT TV Package:   </th>
+    <th>    Total payment:   </th>
+    <th>    Other Handy Info:    </th>
+    <tr *ngFor="let form of allFormsFinished let i = index"
+        [ngClass]="form.isSelected ? 'selected' : ''">
+        <td>    {{ form.servedBy }}   </td>
+        <td>    {{ form.date }}   </td>
+        <td>    {{ form.email }}    </td>
+        <td>    {{ form.btBroadband }}    </td>
+        <td>    {{ form.btTvPackage }}    </td>
+        <td>    {{ form.sportPackage }}   </td>
+        <th>    Total payment:   </th>
+        <td>    {{ form.totalPayment }}   </td>
+        <th>    Other Handy Info:    </th>
+        <td>    {{ form.handyInfo }}    </td>
+    </tr>
+  </div>
+</table>
+</div>

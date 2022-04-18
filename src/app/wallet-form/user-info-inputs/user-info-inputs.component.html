@@ -1,0 +1,77 @@
+<form class="container" [formGroup]="userInputWallet"  (submit)="onSubmit(this.userInputWallet.value)">
+  <div class="row">
+    <label for="servedBy">Served By: </label><br>
+    <input
+    type="text"
+    name="servedBy"
+    formControlName="servedBy"
+    ><br>
+
+    <label for="email">Email</label><br>
+    <input
+    type="text"
+    name="email"
+    formControlName="email"
+    ><br>
+  </div>
+
+  <div class="row">
+    <label for="btBroadband">BT broadband is</label><br>
+    <input
+    type="text"
+    name="btBroadband"
+    formControlName="btBroadband"
+    ><br>
+    <label for="btTvPackage">BT Package</label><br>
+    <input
+    type="text"
+    name="btTvPackage"
+    formControlName="btTvPackage"><br>
+    <label for="sportPackage">Sport Package</label><br>
+   <input
+      name="sportPackage"
+      formControlName="sportPackage"
+      type="date"
+    >
+
+  </div>
+
+  <div class="row">
+    <label for="monthlyCharge">Monthly Charge</label><br>
+    <input
+    type="text"
+    name="monthlyCharge"
+    formControlName="monthlyCharge"
+    (keypress)="keyPress($event)"
+    ><br>
+    <label for="upFrontFee">Upfront fee</label><br>
+    <input
+    type="text"
+    name="upFrontFee"
+    formControlName="upFrontFee"
+    (keypress)="keyPress($event)"
+    ><br>
+    <label for="payments">Instalment of payments </label><br>
+    <select name="payments" formControlName="payments" name="payments" class="form-control">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+  </div>
+  <div class="row"><br>
+    <label for="handyInfo">Handy information</label><br>
+    <textarea
+    class="form-control"
+    name="handyInfo"
+    formControlName="handyInfo"
+    ></textarea><br>
+    <button
+    type="reset"
+    class="btn btn-error"
+    (click)="userInputWallet.reset()"
+    >Reset</button>
+    <button type="submit" class="btn btn-primary" [disabled]="userInputWallet.invalid">Submit</button>
+  </div>
+</form>

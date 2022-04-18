@@ -1,0 +1,41 @@
+<div [formGroup]="storeWalletForm" class="row">
+  <label for="storeDbName">Store Name: </label><br>
+  <select
+    name="storeDbName"
+    class="form-control"
+    formControlName="storeDbName"
+    [(ngModel)]="currentStore"
+    >
+    <option
+    *ngFor="let store of stores | async"
+    [ngValue]="store"
+    >{{ store.storeId }}
+  </option>
+  </select>
+
+<div class="row-12-xs">
+    <label for="date">Date</label><br>
+    <input
+    name="date"
+    type="text"
+    formControlName="storeDbDate"
+    value=""><br>
+
+    <label for="address">Store Address</label><br>
+    <input
+    type="text"
+    name="address"
+    formControlName="storeDbAddress"
+    value="{{currentStore.storeAddress}}"
+    ><br>
+
+    <label for="phoneNum"> Store Phone Number</label><br>
+    <input
+    type="text"
+    name="phoneNum"
+    formControlName="storeDbPhoneNumber"
+    value="{{currentStore.phoneNumber}}"
+
+    ><br>
+  </div>
+</div>
